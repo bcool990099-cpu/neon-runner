@@ -33,7 +33,7 @@ canvas{display:block;width:100%;height:100%;background:#0a0a14;}
 <canvas id="c"></canvas>
 <div id="m"><div>
 <h1>NEON<br>RUNNER</h1>
-<p>Tap to jump</p>
+<p>Tap to jump. Easy start!</p>
 <p class="b">Best: <span id="best">0</span></p>
 <button class="btn" id="play">PLAY</button>
 </div></div>
@@ -56,15 +56,15 @@ var run=0,sc=0,bs=0,fr=0,sp=0,lv=1;
 try{bs=parseInt(localStorage.getItem("nr_best"))||0;}catch(e){}
 document.getElementById("best").textContent=bs;
 document.getElementById("best2").textContent=bs;
-var px,py,pw,ph,pvy,pgr=0.45*S,pjp=-10*S,pgrnd=1;
-var ground,obs=[],stimer=0,srate=140;
+var px=0,py=0,pw=22,ph=28,pvy=0,pgr=0.45,pjp=-10,pgrnd=1;
+var ground=0,obs=[],stimer=0,srate=140;
 var stars=[];
 for(var i=0;i<50;i++)stars.push({x:Math.random(),y:Math.random(),s:Math.random()*2+0.5,sp:Math.random()*0.4+0.1,b:Math.random()*0.5+0.2});
 function ig(){
 sc=0;fr=0;lv=1;sp=2.5;obs=[];stimer=0;srate=140;
 ground=H*0.7;pw=22*S;ph=28*S;
 px=W*0.2-pw/2;py=ground-ph;
-pvy=0;pgrnd=1;
+pvy=0;pgr=0.45*S;pjp=-10*S;pgrnd=1;
 document.getElementById("lv").textContent="LEVEL 1";
 document.getElementById("lv").style.color="#444";
 }
@@ -79,7 +79,7 @@ document.getElementById("sc").innerHTML="<s>SCORE</s>0";
 function up(){
 if(!run)return;fr++;
 var nl=Math.floor(fr/200)+1;
-if(nl!==lv){lv=nl;sp=2.5+(lv-1)*0.35;srate=Math.max(140-(lv-1)*8,50);
+if(nl!==lv){lv=nl;sp=2.5+(lv-1)*0.35;srate=Math.max(140-(lv-1)*8,55);
 var e=document.getElementById("lv");e.textContent="LEVEL "+lv;
 var cl=["#1f2937","#1f2937","#1f2937","#374151","#374151","#4b5563","#6b7280","#9ca3af"];
 e.style.color=cl[Math.min(lv-1,cl.length-1)]||"#1f2937";}
